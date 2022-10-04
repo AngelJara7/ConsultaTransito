@@ -1,11 +1,11 @@
-import Usuario from "../models/usuario.js";
+import datosUsuario from "../models/datosUsuario.js";
 import Licencia from "../models/licencia.js";
 import tipoLicencia from "../models/tipoLicencia.js";
 
 const autenticar = async (req, res) => {
     const { tipo_identificacion, numero_identificacion, numero_control } = req.body;
     try {
-        const usuario = await Usuario.findOne({
+        const usuario = await datosUsuario.findOne({
             include: {
                 model: Licencia,
                 as: "licencia",
