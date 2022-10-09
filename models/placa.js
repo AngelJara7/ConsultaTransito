@@ -4,7 +4,8 @@ import db from "../config/db.js";
 const Placa = db.define('placa', {
     id_placa: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     id_vehiculo: {
         type: Sequelize.INTEGER

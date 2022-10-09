@@ -3,8 +3,9 @@ import db from "../config/db.js";
 
 const Licencia = db.define('licencia', {
     numero_control: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
+        type: Sequelize.BIGINT,
+        primaryKey: true,
+        autoIncrement: true
     },
     id_usuario: {
         type: Sequelize.INTEGER

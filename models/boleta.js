@@ -4,7 +4,8 @@ import db from "../config/db.js";
 const Boleta = db.define('boleta', {
     numero_boleta: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     numero_control: {
         type: Sequelize.INTEGER

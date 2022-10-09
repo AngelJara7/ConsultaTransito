@@ -4,7 +4,8 @@ import db from "../config/db.js";
 const datosUsuario = db.define('datos_usuario', {
     id_usuario: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     tipo_identificacion: {
         type: Sequelize.STRING
@@ -38,4 +39,4 @@ const datosUsuario = db.define('datos_usuario', {
     tableName: "datos_usuario",
 });
 
-export default Usuario;
+export default datosUsuario;

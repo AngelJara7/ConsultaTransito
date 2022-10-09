@@ -22,16 +22,12 @@ const consultarVehiculo = async (req, res) => {
                 as: "municipio"
         }],
             where: {
-                id_usuario: id_usuario
+                id_usuario
             }
         });
-        if (!vehiculo) {
-            return res.json({msg: "No hay Datos para mostrar"});
-        }
-        res.json(vehiculo);
+        res.status(200).json(vehiculo);
     } catch (error) {
-        res.json(error);
-        console.log(error);
+        res.status(500).json(error);
     }
 };
 

@@ -4,7 +4,8 @@ import db from "../config/db.js";
 const Seguro = db.define('seguro', {
     id_seguro: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     id_vehiculo: {
         type: Sequelize.INTEGER
