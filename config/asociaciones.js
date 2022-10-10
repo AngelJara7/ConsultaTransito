@@ -15,13 +15,13 @@ Licencia.belongsTo(tipoLicencia, { as: "tipoLicencia", foreignKey: "tipo_licenci
 
 //crear relacion entre vehiculo y usuario (muchos a uno)
 datosUsuario.hasMany(Vehiculo, { as: "vehiculo", foreignKey: "id_usuario" });
-Vehiculo.belongsTo(datosUsuario, { as: "tipoLicencia", foreignKey: "id_usuario" });
+Vehiculo.belongsTo(datosUsuario, { as: "datosUsuario", foreignKey: "id_usuario" });
 
 //crear relacion entre vehiculo y placa (uno a uno)
 Vehiculo.hasOne(Placa, { as: "placa", foreignKey: "id_vehiculo" });
 Placa.belongsTo(Vehiculo, { as: "vehiculo", foreignKey: "id_vehiculo" });
 
-//crear relacion entre vehiculo y placa (uno a uno)
+//crear relacion entre vehiculo y seguro (uno a uno)
 Vehiculo.hasOne(Seguro, { as: "seguro", foreignKey: "id_vehiculo" });
 Seguro.belongsTo(Vehiculo, { as: "vehiculo", foreignKey: "id_vehiculo" });
 
@@ -35,12 +35,12 @@ Municipio.belongsTo(Provincia, { as: "provincia", foreignKey: "codigo_provincia"
 
 //crear relacion entre usuario y licencia (uno a uno)
 datosUsuario.hasOne(Licencia, { as: "licencia", foreignKey: "id_usuario" });
-Licencia.belongsTo(datosUsuario, { as: "usuario", foreignKey: "id_usuario" });
+Licencia.belongsTo(datosUsuario, { as: "datosUsuario", foreignKey: "id_usuario" });
 
 //crear relacion entre  provincia y vehiculo (muchos a uno)
 Provincia.hasMany(Vehiculo, { as: "vehiculo", foreignKey: "codigo_provincia" });
 Vehiculo.belongsTo(Provincia, { as: "provincia", foreignKey: "codigo_provincia" });
 
-//crear relacion entre  provincia y vehiculo (muchos a uno)
+//crear relacion entre  municipio y vehiculo (muchos a uno)
 Municipio.hasMany(Vehiculo, { as: "vehiculo", foreignKey: "codigo_municipio" });
 Vehiculo.belongsTo(Municipio, { as: "municipio", foreignKey: "codigo_municipio" });
