@@ -21,6 +21,15 @@ const crearLicencia = async (req, res) => {
         }
 };
 
+const consultarTipoLicencia = async (req, res) => {
+    try {
+        const tiposLicencia = await tipoLicencia.findAll();
+        return res.status(200).json(tiposLicencia);
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+};
+
 const consultarLicencia = async (req, res) => {
     const { numero_control } = req.params;
 
@@ -68,4 +77,4 @@ const editarLicencia = async (req, res) => {
     }
 };
 
-export { crearLicencia, consultarLicencia, editarLicencia };
+export { crearLicencia, consultarTipoLicencia, consultarLicencia, editarLicencia };
