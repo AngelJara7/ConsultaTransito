@@ -1,5 +1,7 @@
 import express from "express";
 import { autenticar, 
+    listarProvincia, 
+    listarMunicipio, 
     crearUsuario, 
     listarUsuarios, 
     buscarUsuario, 
@@ -12,6 +14,8 @@ const router = express.Router();
 router.post("/inicio", autenticar);
 
 // Crear, Eliminar, actualizar datos de los conductores (acceso: usuario del sistema)
+router.get("/usuarios/provincia", listarProvincia);
+router.get("/usuarios/municipio/:codigo_provincia", listarMunicipio);
 router.post("/usuarios", crearUsuario);
 router.get("/usuarios", listarUsuarios);
 router.get("/usuarios/:numero_identificacion", buscarUsuario);

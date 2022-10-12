@@ -1,9 +1,12 @@
 import datosUsuario from "../models/datosUsuario.js";
+import Provincia from "../models/provinica.js";
+import municipio from "../models/municipio.js";
 import Licencia from "../models/licencia.js";
 import tipoLicencia from "../models/tipoLicencia.js";
 import Vehiculo from "../models/vehiculo.js";
 import Boleta from "../models/boleta.js";
 import tipoBoleta from "../models/tipoBoleta.js";
+import Municipio from "../models/municipio.js";
 
 const autenticar = async (req, res) => {
     const { tipo_identificacion, numero_identificacion, numero_control } = req.body;
@@ -31,6 +34,32 @@ const autenticar = async (req, res) => {
         res.status(200).json(usuario);
     } catch (error) {
         res.status(500).json(error);
+    }
+};
+
+const listarProvincia = async (req, res) => {
+    try {
+        const provincia = await Provincia.findAll();
+        return res.status(200).json(provincia);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
+    }
+};
+
+const listarMunicipio = async (req, res) => {
+    const { codigo_provincia } = req.params;
+
+    try {
+        const municipio = await Municipio.findAll({
+            where: {
+                codigo_provincia
+            }
+        });
+        return res.status(200).json(municipio);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error);
     }
 };
 
@@ -127,4 +156,11 @@ const consultarBoletas = async (req, res) => {
     }
 };
 
-export { autenticar, crearUsuario, listarUsuarios, buscarUsuario, consultarVehiculos, consultarBoletas };
+export { autenticar, 
+    listarProvincia, 
+    listarMunicipio, 
+    crearUsuario, 
+    listarUsuarios, 
+    buscarUsuario, 
+    consultarVehiculos, 
+    consultarBoletas };
